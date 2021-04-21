@@ -1048,10 +1048,10 @@
     fs-extra "^7.0.1"
     p-filter "^2.1.0"
 
-"@changesets/types@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/@changesets/types/-/types-3.2.0.tgz#d8306d7219c3b19b6d860ddeb9d7374e2dd6b035"
-  integrity sha512-rAmPtOyXpisEEE25CchKNUAf2ApyAeuZ/h78YDoqKZaCk5tUD0lgYZGPIRV9WTPoqNjJULIym37ogc6pkax5jg==
+"@changesets/types@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/@changesets/types/-/types-4.0.0.tgz#635f804546b0a96ecc0ca3f26403a6782a3dc938"
+  integrity sha512-whLmPx2wgJRoOtxVZop+DJ71z1gTSkij7osiHgN+pe//FiE6bb4ffvBBb0rACs2cUPfAkWxgSPzqkECgKS1jvQ==
 
 "@changesets/types@^3.0.0", "@changesets/types@^3.1.0", "@changesets/types@^3.1.1", "@changesets/types@^3.2.0", "@changesets/types@^3.3.0":
   version "3.3.0"
