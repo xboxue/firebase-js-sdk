@@ -15,6 +15,7 @@
     "firebase-messaging-integration-test",
     "firebase-compat-typings-test",
     "@firebase/app-exp",
+    "@firebase/app-check-exp",
     "@firebase/analytics-compat",
     "@firebase/analytics-exp",
     "@firebase/auth-exp",
