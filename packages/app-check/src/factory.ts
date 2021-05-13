@@ -26,12 +26,21 @@ import {
 } from './internal-api';
 import { Provider } from '@firebase/component';
 
-export function factory(app: FirebaseApp): FirebaseAppCheck {
+export function factory(
+  app: FirebaseApp,
+  platformLoggerProvider: Provider<'platform-logger'>
+): FirebaseAppCheck {
   return {
     activate: (
-      siteKeyOrProvider: string | AppCheckProvider,
+      provider: AppCheckProvider,
       isTokenAutoRefreshEnabled?: boolean
-    ) => activate(app, siteKeyOrProvider, isTokenAutoRefreshEnabled),
+    ) =>
+      activate(
+        app,
+        provider,
+        platformLoggerProvider,
+        isTokenAutoRefreshEnabled
+      ),
     setTokenAutoRefreshEnabled: (isTokenAutoRefreshEnabled: boolean) =>
       setTokenAutoRefreshEnabled(app, isTokenAutoRefreshEnabled)
   };

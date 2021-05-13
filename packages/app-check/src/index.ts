@@ -26,6 +26,7 @@ import {
   AppCheckComponentName
 } from '@firebase/app-check-types';
 import { factory, internalFactory } from './factory';
+import { ReCAPTCHAProvider } from './providers';
 import { initializeDebugMode } from './debug';
 import { AppCheckInternalComponentName } from '@firebase/app-check-interop-types';
 import { name, version } from '../package.json';
@@ -41,10 +42,14 @@ function registerAppCheck(firebase: _FirebaseNamespace): void {
       container => {
         // getImmediate for FirebaseApp will always succeed
         const app = container.getProvider('app').getImmediate();
-        return factory(app);
+        const platformLoggerProvider = container.getProvider('platform-logger');
+        return factory(app, platformLoggerProvider);
       },
       ComponentType.PUBLIC
     )
+      .setServiceProps({
+        ReCAPTCHAProvider
+      })
       /**
        * AppCheck can only be initialized by explicitly calling firebase.appCheck()
        * We don't want firebase products that consume AppCheck to gate on AppCheck
