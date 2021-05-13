@@ -19,7 +19,7 @@ import { AppCheckProvider } from '@firebase/app-check-types';
 import { FirebaseApp } from '@firebase/app-types';
 import { Provider } from '@firebase/component';
 import { ERROR_FACTORY, AppCheckError } from './errors';
-import { ReCAPTCHAProvider, ReCAPTCHAProviderInternal } from './providers';
+import { ReCAPTCHAV3Provider, ReCAPTCHAV3ProviderInternal } from './providers';
 import { initialize as initializeRecaptcha } from './recaptcha';
 import { getState, setState, AppCheckState } from './state';
 
@@ -58,10 +58,10 @@ export function activate(
   setState(app, newState);
 
   // initialize reCAPTCHA if provider is a ReCAPTCHAProvider
-  if (newState.provider instanceof ReCAPTCHAProvider) {
+  if (newState.provider instanceof ReCAPTCHAV3Provider) {
     // Wrap public ReCAPTCHAProvider in an internal class that provides
     // platform logging and app.
-    const internalProvider = new ReCAPTCHAProviderInternal(
+    const internalProvider = new ReCAPTCHAV3ProviderInternal(
       app,
       newState.provider.siteKey,
       platformLoggerProvider

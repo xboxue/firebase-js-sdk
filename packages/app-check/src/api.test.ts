@@ -27,7 +27,7 @@ import {
 import { getState } from './state';
 import * as reCAPTCHA from './recaptcha';
 import { FirebaseApp } from '@firebase/app-types';
-import { ReCAPTCHAProvider } from './providers';
+import { ReCAPTCHAV3Provider } from './providers';
 
 describe('api', () => {
   describe('activate()', () => {
@@ -41,7 +41,7 @@ describe('api', () => {
       expect(getState(app).activated).to.equal(false);
       activate(
         app,
-        new ReCAPTCHAProvider(FAKE_SITE_KEY),
+        new ReCAPTCHAV3Provider(FAKE_SITE_KEY),
         getFakePlatformLoggingProvider()
       );
       expect(getState(app).activated).to.equal(true);
@@ -51,7 +51,7 @@ describe('api', () => {
       app = getFakeApp({ automaticDataCollectionEnabled: false });
       activate(
         app,
-        new ReCAPTCHAProvider(FAKE_SITE_KEY),
+        new ReCAPTCHAV3Provider(FAKE_SITE_KEY),
         getFakePlatformLoggingProvider()
       );
       expect(getState(app).isTokenAutoRefreshEnabled).to.equal(false);
@@ -61,7 +61,7 @@ describe('api', () => {
       app = getFakeApp({ automaticDataCollectionEnabled: false });
       activate(
         app,
-        new ReCAPTCHAProvider(FAKE_SITE_KEY),
+        new ReCAPTCHAV3Provider(FAKE_SITE_KEY),
         getFakePlatformLoggingProvider(),
         true
       );
@@ -71,13 +71,13 @@ describe('api', () => {
     it('can only be called once', () => {
       activate(
         app,
-        new ReCAPTCHAProvider(FAKE_SITE_KEY),
+        new ReCAPTCHAV3Provider(FAKE_SITE_KEY),
         getFakePlatformLoggingProvider()
       );
       expect(() =>
         activate(
           app,
-          new ReCAPTCHAProvider(FAKE_SITE_KEY),
+          new ReCAPTCHAV3Provider(FAKE_SITE_KEY),
           getFakePlatformLoggingProvider()
         )
       ).to.throw(/AppCheck can only be activated once/);
@@ -89,7 +89,7 @@ describe('api', () => {
       );
       activate(
         app,
-        new ReCAPTCHAProvider(FAKE_SITE_KEY),
+        new ReCAPTCHAV3Provider(FAKE_SITE_KEY),
         getFakePlatformLoggingProvider()
       );
       expect(initReCAPTCHAStub).to.have.been.calledWithExactly(
